@@ -1,13 +1,27 @@
 from random import randrange
 
-for experiment in [100, 1000, 10000, 100000]:
-    heads = tails = 0
-    for i in range(experiment):
-        if randrange(100) < 60: heads = heads + 1
-        else: tails = tails + 1
-    print("experiment:", experiment)
-    print("heads =", heads, "   tails =", tails)
-    print("the ratio of #heads/#tails is",(round(heads/tails, 4)))
-    print()
+def biased_coin(N,B):
+    from random import randrange
+    random_number = randrange(N)
+    if random_number < B:
+        return "Heads"
+    else:
+        return "Tails"
     
-    
+N = 101
+B = randrange(N+1)
+
+total_tosses = 500
+heads = 0
+
+for i in range(total_tosses):
+    if biased_coin(N,B) == "Heads":
+        heads = heads + 1
+
+guess = heads/total_tosses
+real_bias = B/N
+error = abs(guess-real_bias)/real_bias*100
+
+print("my guess is",guess)
+print("real bias is", real_bias)
+print("error (%) is",error)
