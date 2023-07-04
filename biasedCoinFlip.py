@@ -9,9 +9,10 @@ def biased_coin(N,B):
         return "Tails"
     
 N = 101
-B = randrange(N+1)
+B = 20
+# B = randrange(N+1)
 
-total_tosses = 500
+total_tosses = 1000
 heads = 0
 
 for i in range(total_tosses):
